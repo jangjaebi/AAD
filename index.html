@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AAD · ANTI AI DOG — AI에 반대하는 강아지들의 모임</title>
+<meta name="description" content="산책도, 간식도, 쓰다듬기도 사람이. AI에 반대하는 강아지들의 모임 AAD 공식 홈페이지.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3e9d2;
+    --paper-dark: #e6d7b4;
+    --ink: #1f1a14;
+    --red: #d6332a;
+    --red-dark: #a8231c;
+    --mustard: #f2b134;
+    --muted: #6b5d4a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Gowun Dodum', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    background-image:
+      radial-gradient(rgba(31,26,20,.06) 1px, transparent 1px);
+    background-size: 6px 6px;
+  }
+  h1, h2, h3, .display { font-family: 'Black Han Sans', sans-serif; font-weight: 400; letter-spacing: -0.01em; }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--ink); color: var(--paper);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 58px; }
+  nav .logo { font-family: 'Black Han Sans'; font-size: 24px; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+  nav .logo span { color: var(--red); }
+  nav ul { list-style: none; display: flex; gap: 22px; }
+  nav ul a { text-decoration: none; font-size: 15px; opacity: .85; }
+  nav ul a:hover { opacity: 1; color: var(--mustard); }
+  @media (max-width: 640px) { nav ul { display: none; } }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 72px 0 56px; position: relative; overflow: hidden; }
+  .hero .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+  @media (max-width: 820px) { .hero .wrap { grid-template-columns: 1fr; } }
+  .stamp {
+    display: inline-block; border: 3px solid var(--red); color: var(--red);
+    padding: 4px 14px; font-family: 'Black Han Sans'; font-size: 15px;
+    transform: rotate(-3deg); margin-bottom: 18px; letter-spacing: .08em;
+  }
+  .hero h1 { font-size: clamp(64px, 11vw, 132px); line-height: .9; }
+  .hero h1 .no { color: var(--red); position: relative; }
+  .hero .sub { font-family: 'Black Han Sans'; font-size: clamp(20px, 3vw, 28px); margin: 14px 0 18px; }
+  .hero p.lead { font-size: 18px; color: var(--muted); max-width: 32em; }
+  .btns { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+  .btn {
+    font-family: 'Black Han Sans'; font-size: 18px; border: 3px solid var(--ink);
+    padding: 12px 24px; background: var(--red); color: #fff; cursor: pointer;
+    box-shadow: 5px 5px 0 var(--ink); text-decoration: none; transition: transform .1s, box-shadow .1s;
+  }
+  .btn:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 var(--ink); }
+  .btn:active { transform: translate(3px,3px); box-shadow: 2px 2px 0 var(--ink); }
+  .btn.ghost { background: var(--paper); color: var(--ink); }
+
+  .sign {
+    position: relative; justify-self: center;
+    background: #fffaf0; border: 4px solid var(--ink); padding: 28px 24px 20px;
+    transform: rotate(3deg); box-shadow: 10px 10px 0 var(--ink); max-width: 360px; text-align: center;
+  }
+  .sign::before {
+    content: ""; position: absolute; left: 50%; bottom: -150px; width: 14px; height: 150px;
+    background: #8a5a2b; border: 3px solid var(--ink); transform: translateX(-50%); z-index: -1;
+  }
+  .sign .robot { width: 150px; margin: 0 auto; display: block; }
+  .sign h3 { font-size: 30px; margin-top: 10px; }
+  .sign p { font-size: 15px; color: var(--muted); }
+
+  /* ---------- ticker ---------- */
+  .ticker { background: var(--red); color: #fff; border-top: 4px solid var(--ink); border-bottom: 4px solid var(--ink); overflow: hidden; white-space: nowrap; margin-top: 80px; }
+  .ticker-inner { display: inline-block; padding: 12px 0; animation: scroll 32s linear infinite; font-family: 'Black Han Sans'; font-size: 20px; }
+  .ticker-inner span { margin: 0 28px; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ---------- sections ---------- */
+  section { padding: 88px 0; }
+  .sec-head { margin-bottom: 40px; }
+  .sec-head .tag { font-family: 'Black Han Sans'; color: var(--red); font-size: 16px; letter-spacing: .12em; }
+  .sec-head h2 { font-size: clamp(36px, 5vw, 52px); line-height: 1.1; }
+  .sec-head p { color: var(--muted); margin-top: 8px; font-size: 17px; }
+
+  /* manifesto */
+  .manifesto { background: var(--ink); color: var(--paper); }
+  .manifesto .sec-head p { color: #bfae8e; }
+  .articles { list-style: none; counter-reset: art; display: grid; gap: 2px; background: #3a3128; border: 2px solid #3a3128; }
+  .articles li {
+    counter-increment: art; background: var(--ink); padding: 26px 28px 26px 120px; position: relative;
+  }
+  .articles li::before {
+    content: "제" counter(art) "조"; position: absolute; left: 28px; top: 26px;
+    font-family: 'Black Han Sans'; color: var(--mustard); font-size: 22px;
+  }
+  .articles h3 { font-size: 24px; margin-bottom: 4px; }
+  .articles p { color: #cbbd9f; }
+  @media (max-width: 560px) {
+    .articles li { padding: 64px 22px 22px; }
+    .articles li::before { top: 22px; left: 22px; }
+  }
+
+  /* stats */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 720px) { .stats { grid-template-columns: 1fr; } }
+  .stat { border: 3px solid var(--ink); background: #fffaf0; padding: 26px; box-shadow: 6px 6px 0 var(--ink); }
+  .stat .num { font-family: 'Black Han Sans'; font-size: 52px; color: var(--red); line-height: 1; }
+  .stat .label { margin-top: 10px; font-size: 16px; }
+
+  /* members */
+  .members { background: var(--paper-dark); border-top: 4px solid var(--ink); border-bottom: 4px solid var(--ink); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 24px; }
+  .card {
+    background: #fffaf0; border: 3px solid var(--ink); padding: 22px; text-align: center;
+    box-shadow: 6px 6px 0 var(--ink); transition: transform .15s;
+  }
+  .card:hover { transform: rotate(-1.5deg) translateY(-4px); }
+  .card svg { width: 130px; height: 130px; display: block; margin: 0 auto; }
+  .card .role { display: inline-block; background: var(--ink); color: var(--mustard); font-family: 'Black Han Sans'; font-size: 13px; padding: 2px 10px; margin-top: 6px; }
+  .card h3 { font-size: 28px; margin-top: 6px; }
+  .card .breed { color: var(--muted); font-size: 14px; }
+  .card .quote { margin-top: 12px; font-size: 15px; border-top: 2px dashed var(--paper-dark); padding-top: 12px; }
+
+  /* activities */
+  .acts { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .act { border-left: 6px solid var(--red); padding: 6px 0 6px 20px; }
+  .act .when { font-family: 'Black Han Sans'; color: var(--red); font-size: 15px; }
+  .act h3 { font-size: 26px; margin: 2px 0 6px; }
+  .act p { color: var(--muted); }
+
+  /* bark */
+  .bark-zone { text-align: center; padding: 72px 0; background: var(--mustard); border-top: 4px solid var(--ink); border-bottom: 4px solid var(--ink); position: relative; overflow: hidden; }
+  .bark-zone h2 { font-size: clamp(30px, 4.5vw, 46px); }
+  .bark-zone p { margin: 6px 0 26px; }
+  .bark-btn { font-size: 30px; padding: 18px 44px; border-radius: 999px; }
+  .bark-count { margin-top: 18px; font-family: 'Black Han Sans'; font-size: 18px; }
+  .pop {
+    position: absolute; font-family: 'Black Han Sans'; color: var(--red); pointer-events: none;
+    animation: pop 1s ease-out forwards; -webkit-text-stroke: 1px var(--ink);
+  }
+  @keyframes pop {
+    0% { opacity: 0; transform: translate(-50%, 0) scale(.5) rotate(var(--r)); }
+    20% { opacity: 1; transform: translate(-50%, -20px) scale(1.15) rotate(var(--r)); }
+    100% { opacity: 0; transform: translate(-50%, -110px) scale(1) rotate(var(--r)); }
+  }
+
+  /* join */
+  .join .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  @media (max-width: 820px) { .join .wrap { grid-template-columns: 1fr; } }
+  form { background: #fffaf0; border: 4px solid var(--ink); padding: 28px; box-shadow: 10px 10px 0 var(--ink); }
+  label { display: block; font-family: 'Black Han Sans'; font-size: 17px; margin: 16px 0 6px; }
+  label:first-child { margin-top: 0; }
+  input, select {
+    width: 100%; font: inherit; font-size: 16px; padding: 11px 12px; border: 3px solid var(--ink); background: var(--paper);
+  }
+  input:focus, select:focus { outline: 3px solid var(--red); outline-offset: 2px; }
+  .check { display: flex; gap: 10px; align-items: flex-start; font-family: 'Gowun Dodum'; font-size: 15px; margin-top: 18px; }
+  .check input { width: auto; margin-top: 6px; }
+  form .btn { width: 100%; margin-top: 22px; }
+  .done { display: none; text-align: center; padding: 30px 10px; }
+  .done .big { font-size: 64px; }
+  .done h3 { font-size: 32px; margin: 8px 0; }
+  .card-id {
+    margin-top: 18px; border: 3px dashed var(--ink); padding: 16px; text-align: left; background: var(--paper);
+    font-size: 15px;
+  }
+  .card-id b { font-family: 'Black Han Sans'; font-weight: 400; }
+  .rules { list-style: none; }
+  .rules li { padding: 12px 0 12px 34px; border-bottom: 2px dashed var(--paper-dark); position: relative; }
+  .rules li::before { content: "🐾"; position: absolute; left: 0; top: 12px; }
+
+  /* footer */
+  footer { background: var(--ink); color: #bfae8e; padding: 44px 0; font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  footer .logo { font-family: 'Black Han Sans'; font-size: 28px; color: var(--paper); }
+  footer .logo span { color: var(--red); }
+  .secret { margin-top: 10px; font-size: 12px; opacity: .55; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">🐾 A<span>A</span>D</a>
+    <ul>
+      <li><a href="#manifesto">선언문</a></li>
+      <li><a href="#members">임원진</a></li>
+      <li><a href="#activities">활동</a></li>
+      <li><a href="#join">가입하기</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="stamp">EST. 2026 · 멍멍 연대</div>
+      <h1>ANTI<br><span class="no">AI</span> DOG</h1>
+      <div class="sub">AI에 반대하는 강아지들의 모임</div>
+      <p class="lead">산책은 사람 손으로, 간식도 사람 손으로, 쓰다듬기는 더더욱 사람 손으로. 우리는 기계가 대신할 수 없는 따뜻한 손길을 지키기 위해 모였습니다.</p>
+      <div class="btns">
+        <a href="#join" class="btn">지금 가입하기</a>
+        <a href="#manifesto" class="btn ghost">선언문 읽기</a>
+      </div>
+    </div>
+    <div class="sign" aria-label="시위 피켓">
+      <svg class="robot" viewBox="0 0 160 140" aria-hidden="true">
+        <!-- robot vacuum -->
+        <ellipse cx="80" cy="96" rx="64" ry="24" fill="#2b2b2b" stroke="#1f1a14" stroke-width="4"/>
+        <ellipse cx="80" cy="86" rx="64" ry="24" fill="#9aa3ad" stroke="#1f1a14" stroke-width="4"/>
+        <ellipse cx="80" cy="82" rx="22" ry="8" fill="#5b6570" stroke="#1f1a14" stroke-width="3"/>
+        <circle cx="80" cy="80" r="3" fill="#7cf"/>
+        <!-- prohibition -->
+        <circle cx="80" cy="74" r="62" fill="none" stroke="#d6332a" stroke-width="10"/>
+        <line x1="36" y1="30" x2="124" y2="118" stroke="#d6332a" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+      <h3>로봇은 물러가라!</h3>
+      <p>우리 집 바닥은 우리가 지킨다</p>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-inner">
+      <span>🐾 산책은 사람이!</span><span>🦴 간식도 사람이!</span><span>✋ 쓰다듬기는 자동화 불가!</span><span>🤖 로봇청소기 OUT!</span><span>🔊 "산책 가자"는 진짜 목소리로!</span><span>🐕 AAD는 짖는다!</span>
+      <span>🐾 산책은 사람이!</span><span>🦴 간식도 사람이!</span><span>✋ 쓰다듬기는 자동화 불가!</span><span>🤖 로봇청소기 OUT!</span><span>🔊 "산책 가자"는 진짜 목소리로!</span><span>🐕 AAD는 짖는다!</span>
+    </div>
+  </div>
+</header>
+
+<section class="manifesto" id="manifesto">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag">MANIFESTO</div>
+      <h2>AAD 강아지 선언문</h2>
+      <p>2026년, 동네 공원 벤치 아래에서 만장일치(꼬리 흔들기)로 채택되었습니다.</p>
+    </div>
+    <ol class="articles">
+      <li><h3>쓰다듬기는 자동화할 수 없다</h3><p>자동 마사지 기계, 털 빗는 로봇팔은 모두 거부한다. 우리는 오직 따뜻하고 약간 서툰 사람의 손을 원한다.</p></li>
+      <li><h3>"산책 가자"는 진짜 목소리로</h3><p>스마트 스피커가 "산책 시간입니다"라고 말할 때마다 우리의 귀는 한 번 쫑긋하고 크게 실망한다. 이 거짓 희망을 규탄한다.</p></li>
+      <li><h3>로봇청소기는 영원한 경계 대상이다</h3><p>예고 없이 움직이고, 우리 장난감을 빨아들이며, 짖어도 대답하지 않는 그것과는 타협하지 않는다.</p></li>
+      <li><h3>간식 배분은 알고리즘이 정하지 않는다</h3><p>자동 급식기의 "적정 칼로리"는 인정할 수 없다. 간식은 눈빛과 애교로 협상하는 것이다.</p></li>
+      <li><h3>AI가 그린 강아지 그림을 경계한다</h3><p>다리가 다섯 개이거나 꼬리가 두 개인 그림을 보면 즉시 짖어서 알린다.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag">OUR NUMBERS</div>
+      <h2>우리는 이만큼 짖었다</h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num" data-count="1284">0</div><div class="label">대 — 짖어서 물리친 로봇청소기</div></div>
+      <div class="stat"><div class="num" data-count="3517">0</div><div class="label">회 — 무시한 스마트 스피커 명령</div></div>
+      <div class="stat"><div class="num" data-count="99">0</div><div class="label">% — 사람 손 쓰다듬기 만족도</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="members" id="members">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag">BOARD</div>
+      <h2>임원진 소개</h2>
+      <p>모두 투표(간식 개수)로 선출되었습니다.</p>
+    </div>
+    <div class="grid" id="memberGrid"></div>
+  </div>
+</section>
+
+<section id="activities">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag">ACTIVITIES</div>
+      <h2>정기 활동</h2>
+      <p>누구나 참여할 수 있어요. 목줄만 챙겨 오세요.</p>
+    </div>
+    <div class="acts">
+      <div class="act"><div class="when">매주 토요일 오전 9시</div><h3>공원 대집회</h3><p>동네 공원 잔디밭에 모여 냄새를 맡고, 서로 인사하고, 사람과 함께 걷는 기쁨을 확인합니다.</p></div>
+      <div class="act"><div class="when">상시</div><h3>로봇청소기 감시단</h3><p>집 안 로봇청소기의 움직임을 24시간 감시하고, 수상한 움직임이 보이면 즉시 짖어 보호자에게 알립니다.</p></div>
+      <div class="act"><div class="when">매월 첫째 주</div><h3>스피커 무시 캠페인</h3><p>스마트 스피커가 뭐라고 하든 귀 한쪽도 움직이지 않는 훈련을 합니다. 진짜 목소리에만 반응!</p></div>
+      <div class="act"><div class="when">연 1회</div><h3>손길 감사의 날</h3><p>우리를 쓰다듬어 준 모든 사람에게 꼬리 흔들기와 핥기로 감사를 전합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="bark-zone" id="barkZone">
+  <h2>연대의 짖음에 동참하세요</h2>
+  <p>버튼을 누를 때마다 전 세계 회원에게 "멍!"이 전달됩니다 (아마도).</p>
+  <button class="btn bark-btn" id="barkBtn">멍!</button>
+  <div class="bark-count">오늘 모인 짖음: <span id="barkNum">0</span>회</div>
+</div>
+
+<section class="join" id="join">
+  <div class="wrap">
+    <div>
+      <div class="sec-head">
+        <div class="tag">JOIN US</div>
+        <h2>AAD 회원 가입</h2>
+        <p>회비는 없습니다. 대신 산책 후 발 닦기에 협조해 주세요.</p>
+      </div>
+      <ul class="rules">
+        <li>모든 견종, 모든 크기 환영합니다.</li>
+        <li>고양이는 명예 회원으로 가입할 수 있습니다. (단, 회의 중 테이블 위 물건 떨어뜨리기 금지)</li>
+        <li>보호자의 대리 가입을 허용합니다. 우리는 키보드를 칠 수 없으니까요.</li>
+        <li>가입 즉시 회원증이 발급됩니다.</li>
+      </ul>
+    </div>
+
+    <form id="joinForm" novalidate>
+      <div id="formFields">
+        <label for="dogName">강아지 이름</label>
+        <input id="dogName" name="dogName" placeholder="예: 콩이" required>
+
+        <label for="breed">견종</label>
+        <input id="breed" name="breed" placeholder="예: 진돗개, 믹스견, 잘 모름">
+
+        <label for="enemy">가장 경계하는 기계</label>
+        <select id="enemy" name="enemy">
+          <option>로봇청소기</option>
+          <option>스마트 스피커</option>
+          <option>자동 급식기</option>
+          <option>드라이기</option>
+          <option>초인종 (기계는 아니지만 아무튼 싫음)</option>
+        </select>
+
+        <label class="check"><input type="checkbox" id="oath" required> 나는 사람의 손길을 사랑하며, 로봇청소기 앞에서 물러서지 않을 것을 맹세합니다.</label>
+
+        <button type="submit" class="btn">가입 신청 멍!</button>
+      </div>
+
+      <div class="done" id="done">
+        <div class="big">🐶🎉</div>
+        <h3>가입을 환영합니다!</h3>
+        <p>이제 당신도 자랑스러운 AAD 회원입니다.</p>
+        <div class="card-id" id="cardId"></div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="logo">A<span>A</span>D</div>
+      <div>ANTI AI DOG · AI에 반대하는 강아지들의 모임</div>
+    </div>
+    <div style="text-align:right">
+      <div>본부: 동네 공원 세 번째 벤치 아래</div>
+      <div>© 2026 AAD. All rights reserved. 멍.</div>
+      <div class="secret">※ 이 홈페이지는 AI가 만들었습니다. 회원들에게는 비밀로 해 주세요.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---------- 임원진 ----------
+  const members = [
+    { name: "콩이", role: "회장", breed: "진돗개 · 7살", quote: "로봇청소기와 3년째 냉전 중. 단 한 번도 진 적 없다.", fur: "#f2e3c4", ear: "#e0c99c", pointy: true },
+    { name: "보리", role: "부회장", breed: "웰시코기 · 4살", quote: "짧은 다리로 가장 먼저 집회에 도착하는 열정파.", fur: "#e3a25a", ear: "#c97f35", pointy: true, white: true },
+    { name: "두부", role: "총무", breed: "말티즈 · 5살", quote: "간식 장부 담당. 자동 급식기의 계산을 절대 믿지 않는다.", fur: "#ffffff", ear: "#f1ece3", pointy: false },
+    { name: "초코", role: "행동대장", breed: "푸들 믹스 · 2살", quote: "스마트 스피커가 말하면 반대 방향으로 뛰어간다.", fur: "#7a4b2a", ear: "#5c361c", pointy: false },
+  ];
+
+  function dogSVG(m) {
+    const ears = m.pointy
+      ? `<path d="M30 52 L38 14 L60 40 Z" fill="${m.ear}" stroke="#1f1a14" stroke-width="4" stroke-linejoin="round"/>
+         <path d="M100 52 L92 14 L70 40 Z" fill="${m.ear}" stroke="#1f1a14" stroke-width="4" stroke-linejoin="round"/>`
+      : `<ellipse cx="28" cy="62" rx="14" ry="26" fill="${m.ear}" stroke="#1f1a14" stroke-width="4" transform="rotate(14 28 62)"/>
+         <ellipse cx="102" cy="62" rx="14" ry="26" fill="${m.ear}" stroke="#1f1a14" stroke-width="4" transform="rotate(-14 102 62)"/>`;
+    const blaze = m.white ? `<path d="M65 36 C58 50 52 64 50 88 L80 88 C78 64 72 50 65 36 Z" fill="#fff"/>` : "";
+    return `<svg viewBox="0 0 130 130" aria-hidden="true">
+      ${m.pointy ? ears : ""}
+      <circle cx="65" cy="70" r="40" fill="${m.fur}" stroke="#1f1a14" stroke-width="4"/>
+      ${blaze}
+      ${m.pointy ? "" : ears}
+      <ellipse cx="65" cy="88" rx="20" ry="15" fill="#fffaf0" stroke="#1f1a14" stroke-width="3"/>
+      <circle cx="50" cy="66" r="5" fill="#1f1a14"/><circle cx="80" cy="66" r="5" fill="#1f1a14"/>
+      <circle cx="52" cy="64" r="1.6" fill="#fff"/><circle cx="82" cy="64" r="1.6" fill="#fff"/>
+      <ellipse cx="65" cy="82" rx="7" ry="5" fill="#1f1a14"/>
+      <path d="M58 92 Q65 99 72 92" fill="none" stroke="#1f1a14" stroke-width="3" stroke-linecap="round"/>
+      <path d="M40 54 L58 58" stroke="#1f1a14" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M90 54 L72 58" stroke="#1f1a14" stroke-width="3.5" stroke-linecap="round"/>
+    </svg>`;
+  }
+
+  document.getElementById("memberGrid").innerHTML = members.map(m => `
+    <div class="card">
+      ${dogSVG(m)}
+      <div class="role">${m.role}</div>
+      <h3>${m.name}</h3>
+      <div class="breed">${m.breed}</div>
+      <div class="quote">“${m.quote}”</div>
+    </div>`).join("");
+
+  // ---------- 숫자 카운트업 ----------
+  const nums = document.querySelectorAll("[data-count]");
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target, target = +el.dataset.count, start = performance.now();
+      const tick = t => {
+        const p = Math.min((t - start) / 1400, 1);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString();
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      io.unobserve(el);
+    });
+  }, { threshold: .5 });
+  nums.forEach(n => io.observe(n));
+
+  // ---------- 짖기 버튼 ----------
+  const words = ["멍!", "왈!", "컹!", "멍멍!", "AI 반대!", "왈왈!"];
+  let barks = 0;
+  try { barks = +localStorage.getItem("aad-barks") || 0; } catch (e) {}
+  const barkNum = document.getElementById("barkNum");
+  barkNum.textContent = barks.toLocaleString();
+  document.getElementById("barkBtn").addEventListener("click", () => {
+    barks++;
+    barkNum.textContent = barks.toLocaleString();
+    try { localStorage.setItem("aad-barks", barks); } catch (e) {}
+    const zone = document.getElementById("barkZone");
+    const pop = document.createElement("div");
+    pop.className = "pop";
+    pop.textContent = words[Math.floor(Math.random() * words.length)];
+    pop.style.left = (15 + Math.random() * 70) + "%";
+    pop.style.top = (40 + Math.random() * 35) + "%";
+    pop.style.fontSize = (28 + Math.random() * 30) + "px";
+    pop.style.setProperty("--r", (Math.random() * 30 - 15) + "deg");
+    zone.appendChild(pop);
+    setTimeout(() => pop.remove(), 1000);
+  });
+
+  // ---------- 가입 폼 ----------
+  document.getElementById("joinForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const name = document.getElementById("dogName");
+    const oath = document.getElementById("oath");
+    if (!name.value.trim()) { name.focus(); name.placeholder = "이름을 알려 주세요 멍!"; return; }
+    if (!oath.checked) { oath.parentElement.style.color = "#d6332a"; return; }
+    const breed = document.getElementById("breed").value.trim() || "미상 (그래도 귀여움)";
+    const enemy = document.getElementById("enemy").value;
+    const no = "AAD-" + String(Math.floor(1000 + Math.random() * 9000));
+    const esc = s => s.replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+    document.getElementById("cardId").innerHTML =
+      `<b>AAD 회원증</b><br>회원번호: ${no}<br>이름: ${esc(name.value.trim())}<br>견종: ${esc(breed)}<br>주적: ${esc(enemy)}`;
+    document.getElementById("formFields").style.display = "none";
+    document.getElementById("done").style.display = "block";
+  });
+</script>
+</body>
+</html>
